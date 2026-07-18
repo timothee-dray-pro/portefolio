@@ -1,7 +1,7 @@
-import Home from '../components/Home';
+import Desktop from "../components/Desktop";
 
 function Index() {
-  return <Home />;
+  return <Desktop />;
 }
 
 export default Index;

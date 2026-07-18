@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  gap: 5px;
+}
+
+.icon {
+  color: rgb(255, 204, 0);
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.container p {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+.container:hover {
+  background-color: rgb(234, 237, 236);
+  cursor: pointer;
+}
+
+.container:active {
+  background-color: rgb(225, 241, 244);
+}
