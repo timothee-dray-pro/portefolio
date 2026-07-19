@@ -13,8 +13,11 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
+
+  overflow: hidden;
 }
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }

@@ -1,7 +1,13 @@
 import Desktop from "../components/Desktop";
+import TaskBar from "../components/TaskBar";
 
 function Index() {
-  return <Desktop />;
+  return (
+    <div>
+      <Desktop />
+      <TaskBar />
+    </div>
+  );
 }
 
 export default Index;

@@ -16,17 +16,25 @@
   padding: 0;
 }
 
-.container p {
-  margin: 0;
-  padding: 0;
-  user-select: none;
-}
-
 .container:hover {
-  background-color: rgb(234, 237, 236);
+  background: rgba(173, 216, 255, 0.15);
   cursor: pointer;
 }
 
 .container:active {
-  background-color: rgb(225, 241, 244);
+  background: rgba(173, 216, 255, 0.1);
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+
+  color: white;
+  text-align: center;
+
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.9),
+    1px -1px 0 rgba(0, 0, 0, 0.9),
+    -1px 1px 0 rgba(0, 0, 0, 0.9),
+    1px 1px 0 rgba(0, 0, 0, 0.9);
 }

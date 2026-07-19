@@ -2,15 +2,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Files.module.css";
 import { useDraggable } from "@dnd-kit/react";
+import { useState } from "react";
 
-function File({ id }: { id: string }) {
+function File({
+  id,
+  OpenWindow,
+}: {
+  id: string;
+  OpenWindow: (id: string) => void;
+}) {
+  const [windowIsOpen, setWindowIsOpen] = useState<boolean>(false);
   const { ref } = useDraggable({
     id: id,
   });
   return (
-    <div ref={ref} className={styles.container}>
+    <div
+      ref={ref}
+      className={styles.container}
+      onDoubleClick={() => {
+        OpenWindow(id);
+      }}
+    >
       <FontAwesomeIcon icon={faFolder} className={styles.icon} />
-      <p>Explorateur {id}</p>
+      <p className={styles.text}>Explorateur {id}</p>
     </div>
   );
 }
