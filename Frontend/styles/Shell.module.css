@@ -1,0 +1,95 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  background-color: #0c0c0c;
+  color: #cccccc;
+  font-family: "Consolas", "Cascadia Code", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-y: auto;
+  border-radius: 0 0 8px 8px;
+}
+
+.terminal * {
+  user-select: text;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome {
+  margin: 0;
+  color: #cccccc;
+}
+
+.line {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: #16c60c;
+  white-space: nowrap;
+  user-select: none;
+
+  user-select: text;
+}
+
+.command {
+  color: #ffffff;
+  word-break: break-all;
+}
+
+.resultLine {
+  margin: 0;
+  color: #cccccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.inputLine {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 2px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  caret-color: #ffffff;
+  padding: 0;
+}
+
+/* Scrollbar discrète, style terminal */
+.terminal::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background-color: #3a3a3a;
+  border-radius: 5px;
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+  background-color: #4a4a4a;
+}

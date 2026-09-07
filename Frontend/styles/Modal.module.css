@@ -1,0 +1,118 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  min-width: 320px;
+  max-width: 420px;
+  padding: 22px;
+  border-radius: 14px;
+  background-color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.18);
+  animation: pop 0.14s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.title {
+  margin: 0 0 12px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2430;
+}
+
+.message {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5163;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #d4d8de;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: #2f6fdb;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.confirmButton {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f6fdb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.confirmButton:hover {
+  background-color: #265fc0;
+}
+
+.dangerButton {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e5484d;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.dangerButton:hover {
+  background-color: #cc3b40;
+}
+
+.cancelButton {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #eef0f3;
+  color: #4a5163;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cancelButton:hover {
+  background-color: #e4e7ec;
+}

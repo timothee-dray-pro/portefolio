@@ -1,0 +1,424 @@
+/* Conteneur du plateau (mode local/IA) */
+.gameContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: #1b4a99;
+}
+
+/* ---------- Indicateur de tour ---------- */
+
+.turnIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+.turnDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.turnText {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.boardWrapper {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto; /* prend uniquement l'espace restant après turnIndicator */
+  min-height: 0; /* empêche le débordement (override du min-height:auto par défaut des flex items) */
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Overlay de fin de partie ---------- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(10, 20, 45, 0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.overlayTitle {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.replayButton {
+  padding: 14px 36px;
+  border: none;
+  border-radius: 14px;
+  background-color: #ffffff;
+  color: #1b4a99;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.replayButton:hover {
+  background-color: #f2f6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+.replayButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Menu de choix des modes ---------- */
+
+.menu {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background-color: #2f6fdb;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.subtitle {
+  margin: 0 0 24px 0;
+  font-size: 16px;
+  color: #d6e4fb;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.modeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 14px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.modeButton:hover {
+  background-color: #f2f6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.modeButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+.modeLabel {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b4a99;
+}
+
+.modeHint {
+  font-size: 13px;
+  color: #6b7788;
+}
+
+/* ---------- Sous-menu config IA ---------- */
+
+.configGroup {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 22px;
+}
+
+.groupLabel {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.optionRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Bouton de sélection exclusive (difficulté) */
+.option {
+  flex: 1;
+  min-width: 90px;
+  padding: 12px 8px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.optionActive {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #1b4a99;
+  transform: translateY(-1px);
+}
+
+/* Bouton de couleur (jaune / rouge) */
+.colorOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.colorOption:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.colorActive {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #1b4a99;
+  transform: translateY(-1px);
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.note {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+  color: #d6e4fb;
+  text-align: center;
+  font-style: italic;
+}
+
+.configActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.backButton {
+  padding: 12px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.backButton:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.playButton {
+  padding: 12px 40px;
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1b4a99;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.15s ease;
+}
+
+.playButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.playButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Mode en ligne : salon ---------- */
+
+.playerList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.playerSlot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.playerSlotLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d6e4fb;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.playerName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.playerEmpty {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.codeInput {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  outline: none;
+}
+
+.codeInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.codeInput:focus {
+  border-color: #ffffff;
+}
+
+/* ---------- Message d'erreur du lobby (gris, en bas) ---------- */
+
+.errorMessage {
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  color: #b8c4d6;
+  text-align: center;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}

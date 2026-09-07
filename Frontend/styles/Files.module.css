@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  gap: 5px;
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.container:hover {
+  background: rgba(173, 216, 255, 0.15);
+  cursor: pointer;
+}
+
+.container:active {
+  background: rgba(173, 216, 255, 0.1);
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+
+  color: white;
+  text-align: center;
+
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.9),
+    1px -1px 0 rgba(0, 0, 0, 0.9),
+    -1px 1px 0 rgba(0, 0, 0, 0.9),
+    1px 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+.explorerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 10px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.12s ease;
+}
+
+.explorerItem:hover {
+  background-color: #f0f4fb;
+}
+
+/* Réutilise .icon et .text existants du composant File.
+   Si tu veux une taille d'icône différente dans l'explorateur,
+   tu peux surcharger ici : */
+.explorerItem .icon {
+  font-size: 34px;
+}
+
+.explorerItem .text {
+  font-size: 12px;
+  text-align: center;
+  word-break: break-word;
+  color: #2b303b;
+  text-shadow: none;
+}

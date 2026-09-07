@@ -1,0 +1,135 @@
+.taskbar {
+  width: 100vw;
+  height: 50px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(250, 246, 238);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 99;
+}
+
+.taskbarItems {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 8px;
+}
+
+.taskbarItem {
+  position: relative; /* ancre l'indicateur et le menu de survol */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+  touch-action: none; /* nécessaire pour le drag tactile */
+}
+
+.taskbarItem:hover {
+  background-color: rgb(241, 235, 222);
+  transform: scale(1.05);
+}
+
+.taskbarItem:active {
+  transform: scale(0.92);
+}
+
+.taskbarIcon {
+  font-size: 22px;
+}
+
+/* ---------- Indicateur d'état (sous l'icône) ---------- */
+
+.indicator {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  border-radius: 999px;
+  background-color: transparent;
+  transition:
+    width 0.18s ease,
+    background-color 0.18s ease;
+}
+
+/* Ouvert (pas au premier plan) : petit point discret et neutre. */
+.indicatorOpen {
+  width: 5px;
+  background-color: rgba(60, 60, 60, 0.55);
+}
+
+/* Focus : barre plus large, colorée (couleur injectée en inline = couleur app). */
+.indicatorFocused {
+  width: 18px;
+  height: 3px;
+}
+
+/* ---------- Menu de survol (choix de fenêtre) ---------- */
+
+/* Positionné au-dessus de l'icône, centré. Le padding-bottom crée un pont
+   invisible entre l'icône et le menu pour que le curseur puisse monter
+   dedans sans traverser un vide qui fermerait le survol. */
+.preview {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  min-width: 180px;
+  background-color: rgb(250, 246, 238);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 100;
+}
+
+.previewItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #1b1b1b;
+  font-size: 13px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.previewItem:hover {
+  background-color: rgb(235, 228, 214);
+}
+
+.previewTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.previewBadge {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #8a8f98;
+  font-style: italic;
+}

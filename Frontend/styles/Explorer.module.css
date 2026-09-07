@@ -1,0 +1,196 @@
+.explorer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- Barre d'outils / navigation ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e6e8ec;
+  flex-shrink: 0;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f2f5;
+  color: #4a5163;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.backButton:hover:not(:disabled) {
+  background-color: #e4e7ec;
+}
+
+.backButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pathBar {
+  flex: 1;
+  padding: 7px 12px;
+  background-color: #f5f6f8;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #4a5163;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Grille de fichiers ---------- */
+
+.grid {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  padding: 16px;
+  align-content: start;
+}
+
+/* ---------- Barre de sauvegarde ---------- */
+
+.saveBar {
+  flex-shrink: 0;
+  padding: 12px;
+  border-top: 1px solid #e6e8ec;
+  background-color: #fafbfc;
+}
+
+.saveRow {
+  display: flex;
+  gap: 10px;
+}
+
+.nameInput {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  border: 1px solid #d4d8de;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.nameInput:focus {
+  border-color: #2f6fdb;
+}
+
+.saveButton {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f6fdb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: #265fc0;
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.error {
+  margin: 0 0 8px 0;
+  color: #e5484d;
+  font-size: 13px;
+}
+
+/* Dossier survolé pendant un glisser-déposer */
+.dropTarget {
+  border-radius: 8px;
+  background-color: #e3edfb;
+  outline: 2px dashed #2f6fdb;
+  outline-offset: -2px;
+}
+
+.backDropTarget {
+  background-color: #d3e3fb;
+  outline: 2px dashed #2f6fdb;
+  outline-offset: -2px;
+}
+
+.newFolderButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f6fdb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.newFolderButton:hover {
+  background-color: #265fc0;
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e5484d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: #cc3b40;
+}
+
+.deleteButton:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Entrée sélectionnée (simple clic) */
+.selected {
+  border-radius: 8px;
+  background-color: #dbeafe;
+  outline: 1px solid #2f6fdb;
+  outline-offset: -1px;
+}

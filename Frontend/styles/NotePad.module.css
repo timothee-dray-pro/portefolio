@@ -1,0 +1,95 @@
+.notepad {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- Barre d'actions ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e6e8ec;
+  flex-shrink: 0;
+}
+
+.filePath {
+  font-size: 13px;
+  color: #4a5163;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.savedFlash {
+  color: #2e9e5b;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f6fdb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.saveButton:hover {
+  background-color: #265fc0;
+}
+
+.saveAsButton {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #eef0f3;
+  color: #4a5163;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.saveAsButton:hover {
+  background-color: #e4e7ec;
+}
+
+/* ---------- Zone d'écriture ---------- */
+
+.textarea {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: "Consolas", "Cascadia Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1f2430;
+  background-color: #ffffff;
+}
